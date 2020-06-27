@@ -1,0 +1,23 @@
+<ul class="list-unstyled">
+  <% diaryposts.each do |diarypost| %>
+    <li class="media mb-3">
+      <img class="mr-2 rounded" src="<%= gravatar_url(diarypost.user, { size: 50 }) %>" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to diarypost.user.name, user_path(diarypost.user) %> <span class="text-muted">posted at <%= diarypost.created_at %></span>
+        </div>
+        <div>
+          <p class="mb-0"><%= diarypost.title %></p>
+          <p class="mb-0"><%= diarypost.content %></p>
+          <p class="mb-0"><%= image_tag diarypost.picture.url if diarypost.picture? %></p>
+        </div>
+        <div>
+          <% if current_user == diarypost.user %>
+            <%= link_to "Delete", diarypost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate diaryposts %>
+</ul>
