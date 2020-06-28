@@ -7,7 +7,7 @@
           <%= link_to diarypost.user.name, user_path(diarypost.user) %> <span class="text-muted">posted at <%= diarypost.created_at %></span>
         </div>
         <div>
-          <p class="mb-0"><%= diarypost.title %></p>
+          <b class="mb-0"><%= diarypost.title %></b>
           <p class="mb-0"><%= diarypost.content %></p>
           <p class="mb-0"><%= image_tag diarypost.picture.url if diarypost.picture? %></p>
         </div>
